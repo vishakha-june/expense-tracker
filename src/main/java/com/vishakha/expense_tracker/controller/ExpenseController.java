@@ -25,4 +25,24 @@ public class ExpenseController {
     public List<Expense> getAllExpenses() {
         return expenseService.getAllExpenses();
     }
+
+    @GetMapping("/category/{category}")
+    public List<Expense> getByCategory(@PathVariable String category) {
+        return expenseService.getExpensesByCategory(category);
+    }
+
+    @GetMapping("/total")
+    public double getTotal() {
+        return expenseService.getTotalExpenses();
+    }
+
+    @GetMapping("/total/{category}")
+    public double getCategoryTotal(@PathVariable String category) {
+        return expenseService.getTotalByCategory(category);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteExpense(@PathVariable Long id) {
+        return expenseService.deleteExpense(id);
+    }
 }
